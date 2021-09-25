@@ -1,22 +1,21 @@
-var GITHUB_PAGE_URL = "https://hunzsig-docs.github.io/h-lua"
-var SUMMARY = [
+const SUMMARY = [
   {
-    "name": "首页",
-    "path": "",
-    "icon": ""
+    name: "首页",
+    path: "<HOST>docs/index.md",
+    icon: "SmileOutlined",
   },
   {
-    "name": "更新日志",
-    "path": "changeLog",
-    "children": [
+    name: "欢迎",
+    path: "<HOST>/docs/welcome/index.md",
+    icon: "SmileOutlined",
+  },
+  {
+    name: "Q & A",
+    children: [
       {
-        "name": "属性",
-        "path": "lib/attribute"
+        name: "Q & A",
+        path: "<HOST>/docs/welcome/Q_A.md",
       },
-      {
-        "name": "奖励",
-        "path": "lib/award"
-      }
-    ]
-  }
-]
+    ],
+  },
+];
