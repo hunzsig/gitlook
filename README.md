@@ -3,13 +3,20 @@
 一个让md书籍更好地展示在github page的东东
 
 #### 如何开始
+
 ```
 下载项目
-git clone git@gitlab.com:h-web/soulook.git
-cd soulook
+git clone https://github.com/hunzsig/gplook.git
+```
+
+#### 进入目录
+
+```
+cd gplook
 ```
 
 #### 安装好您的[nodejs及npm管理工具](https://nodejs.org/zh-cn/)
+
 ```
 安装库
 npm i
@@ -17,17 +24,20 @@ npm i
 cnpm i
 ```
 
-#### 将您书籍的md文件，全部复制到src/book里
+#### 克隆 h-react-antd 库到vendor
+
 ```
-需要一个 SUMMARY.md 文件用于目录构建
+git clone https://github.com/hunzsig-javascript/h-react-antd.git vendor
 ```
 
 #### 使用nodejs服务器进行本地测试，默认占用 10001端口
+
 ```
 npm start
 ```
 
 #### 你可以将代码打包放在服务器环境，从而得以访问
+
 ```
 npm run build
 ```
