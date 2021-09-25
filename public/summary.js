@@ -1,20 +1,21 @@
 const SUMMARY = [
   {
     name: "首页",
-    path: "<HOST>docs/index.md",
-    icon: "SmileOutlined",
+    icon: "BookOutlined",
+    path: "http://h-lua.hunzsig.org/docs/index",
   },
   {
     name: "欢迎",
-    path: "<HOST>/docs/welcome/index.md",
     icon: "SmileOutlined",
+    path: "http://h-lua.hunzsig.org/docs/welcome/index",
   },
   {
     name: "Q & A",
+    icon: "QuestionOutlined",
     children: [
       {
         name: "Q & A",
-        path: "<HOST>/docs/welcome/Q_A.md",
+        path: "http://h-lua.hunzsig.org/docs/welcome/Q_A",
       },
     ],
   },

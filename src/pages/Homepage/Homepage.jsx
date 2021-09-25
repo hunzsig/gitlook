@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Menu } from 'antd';
 import * as Icons from "@ant-design/icons";
 import './Homepage.less';
+import { History, Parse } from "../../../vendor/h-react-antd";
 
 class Homepage extends Component {
   static propTypes = {};
@@ -10,6 +11,13 @@ class Homepage extends Component {
   constructor(props) {
     super(props);
     this.host = window.location.protocol + '//' + window.location.host;
+    this.search = Parse.urlSearch();
+    this.title = document.title;
+    this.summary = SUMMARY;
+    this.id = 0;
+    this.id2page = {};
+    this.path2id = {};
+    console.log(this.search);
     this.state = {
       active: null,
       page: null,
@@ -17,19 +25,27 @@ class Homepage extends Component {
   }
 
   componentDidMount() {
-    this.toPage(SUMMARY[0].path);
+    if (this.search.id === undefined || this.id2page[this.search.id] === undefined) {
+      this.toPage(this.summary[0].path);
+    } else {
+      this.toPage(this.id2page[this.search.id].path);
+    }
   }
 
   toPage = (key) => {
     if (key !== this.state.page) {
       let page = key;
       if (key.substr(0, 6) === '<HOST>') {
-        page = key.replace('<HOST>', this.host + '/');
+        page = key.replace('<HOST>', this.host);
       }
       this.setState({
         active: key,
         page: page,
       });
+      const id = this.path2id[key];
+      const tit = this.title + ':' + this.id2page[id].name;
+      document.title = tit;
+      window.history.pushState(null, tit, this.host + Parse.urlEncode({ id: id }));
     }
   };
 
@@ -44,9 +60,14 @@ class Homepage extends Component {
   };
 
   renderSub = (router) => {
-    router = router || SUMMARY;
+    router = router || this.summary;
     return (
       router.map((val) => {
+        if (this.path2id[val.path] === undefined) {
+          this.id = this.id + 1;
+          this.id2page[this.id] = val;
+          this.path2id[val.path] = this.id;
+        }
         if (val.children !== undefined && val.children.length > 0) {
           return (
             <Menu.SubMenu
@@ -76,7 +97,11 @@ class Homepage extends Component {
           {this.renderSub(this.summary)}
         </Menu>
         <div className="h-git-page">
-          <iframe title="page" src={this.state.page}/>
+          <iframe
+            id="gpPageFrame"
+            title="page"
+            src={this.state.page}
+          />
         </div>
       </div>
     );
