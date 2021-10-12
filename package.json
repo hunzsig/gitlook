@@ -66,12 +66,12 @@
     "eslint-plugin-import": "2.8.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.5.1",
-    "hunzsig-javascript-cli-v14": "latest",
+    "hunzsig-javascript-cli-v16": "latest",
     "react": "16.8.4",
     "react-dom": "16.8.4"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "name": "gplook",
   "proxyConfig": {
@@ -79,10 +79,10 @@
     "/xoss": "http://api.io:3002"
   },
   "scripts": {
-    "app": "cliv14 app",
-    "build": "cliv14 build",
+    "app": "cliv16 app",
+    "build": "cliv16 build",
     "lint": "eslint . --ext '.js,.jsx' --fix",
-    "start": "cliv14 dev -p 10001"
+    "start": "cliv16 dev -p 10001"
   },
   "title": "hunzsig",
   "version": "1.0.0"
